@@ -28,6 +28,7 @@ namespace CityInfo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,13 +43,7 @@ namespace CityInfo
                 app.UseExceptionHandler();
             }
 
-            app.Run((context) => {
-                throw new Exception("huuuu");
-            });
-
-            //app.Run(async (context) => {
-            //    await context.Response.WriteAsync("Hello World");
-            //});
+            app.UseMvc();
         }
     }
 }
