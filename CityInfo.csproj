@@ -22,5 +22,6 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\ValuesController.cs" />
+    <Compile Remove="Models\PointsOfInterestDto.cs" />
   </ItemGroup>
 </Project>

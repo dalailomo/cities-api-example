@@ -25,5 +25,5 @@ namespace CityInfo.Controllers
 
             return Ok(cityToReturn);
         }
-}
+    }
 }

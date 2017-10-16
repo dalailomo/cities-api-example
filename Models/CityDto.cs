@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 
 namespace CityInfo.Models
 {
@@ -10,6 +10,15 @@ namespace CityInfo.Models
 
         public string Description { get; set; }
 
-        public int NumberfPointsOfInterest { get; set; }
+        public int NumberOfPointsOfInterest
+        {
+            get
+            {
+                return PointsOfInterest.Count;
+            }
+        }
+
+        public ICollection<PointOfInterestDto> PointsOfInterest { get; set; }
+        = new List<PointOfInterestDto>();
     }
 }
