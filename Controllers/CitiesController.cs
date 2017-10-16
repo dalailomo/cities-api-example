@@ -9,10 +9,7 @@ namespace CityInfo.Controllers
         [HttpGet("api/cities")]
         public JsonResult GetCities()
         {
-            return new JsonResult(new List<object>() {
-                new { id=1, Name="Charrajevo" },
-                new { id=2, Name="Garrido" }
-            });
+            return new JsonResult(CitiesDataStore.Current.Cities);
         }
     }
 }
