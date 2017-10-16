@@ -43,6 +43,7 @@ namespace CityInfo
                 app.UseExceptionHandler();
             }
 
+            app.UseStatusCodePages();
             app.UseMvc();
         }
     }
