@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Serialization;
 
 namespace CityInfo
 {
@@ -29,6 +30,14 @@ namespace CityInfo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+                    // Make properties start with uppercase...
+                    //.AddJsonOptions(o => {
+                    //    if (o.SerializerSettings.ContractResolver != null) {
+                    //        var castedResolver = o.SerializerSettings.ContractResolver
+                    //            as DefaultContractResolver;
+                    //        castedResolver.NamingStrategy = null;
+                    //    }
+                    //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
