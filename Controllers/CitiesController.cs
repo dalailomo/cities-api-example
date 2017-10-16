@@ -6,6 +6,7 @@ namespace CityInfo.Controllers
 {
     public class CitiesController : Controller
     {
+        [HttpGet("api/cities")]
         public JsonResult GetCities()
         {
             return new JsonResult(new List<object>() {
