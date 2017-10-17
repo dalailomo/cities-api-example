@@ -41,6 +41,15 @@ namespace CityInfo.Controllers
                 return BadRequest();
             }
 
+            // not great but for demo purposes... njjjj
+            if (pointOfInterest.Description == pointOfInterest.Name) {
+                ModelState.AddModelError("Description", "Description must be different from the name");
+            }
+
+            if ( ! ModelState.IsValid) {
+                return BadRequest(ModelState);
+            }
+
             var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
 
             if (null == city) {
