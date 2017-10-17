@@ -74,5 +74,48 @@ namespace CityInfo.Controllers
                 id = finalPointOfInterest.Id
             }, finalPointOfInterest);
         }
+
+        [HttpPut("{cityId}/pointsofinterest/{id}")]
+        public IActionResult UpdatePointOfInterest(
+            int cityId,
+            int id,
+            [FromBody] PointOfInterestForUpdateDto pointOfInterest
+        ) {
+            if (null == pointOfInterest)
+            {
+                return BadRequest();
+            }
+
+            // not great but for demo purposes... njjjj
+            if (pointOfInterest.Description == pointOfInterest.Name)
+            {
+                ModelState.AddModelError("Description", "Description must be different from the name");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
+
+            if (null == city)
+            {
+                return NotFound();
+            }
+
+            var pointOfInterestFromStore = city.PointsOfInterest.FirstOrDefault(
+                p => p.Id == id
+            );
+
+            if (null == pointOfInterestFromStore) {
+                return NotFound();
+            }
+
+            pointOfInterestFromStore.Name = pointOfInterest.Name;
+            pointOfInterestFromStore.Description = pointOfInterest.Description;
+
+            return NoContent();
+        }
     }
 }
